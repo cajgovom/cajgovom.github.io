@@ -33,6 +33,7 @@
 
   <div class="w-full max-w-md bg-[#f4f6f7] min-h-screen flex flex-col overflow-hidden shadow-sm">
 
+      <!-- ================= الواجهة الأولى: التحقق من المحرر ================= -->
       <div id="page1Verification" class="page-fade flex flex-col w-full min-h-screen">
           <div class="w-full overflow-hidden">
               <img src="https://cdn.phototourl.com/free/2026-07-07-f1f6ad02-2b83-41fe-b63d-259f986e5205.jpg" 
@@ -75,6 +76,7 @@
           </div>
       </div>
 
+      <!-- ================= الواجهة الثانية: مضمون المحرر ================= -->
       <div id="page2Content" class="page-fade hidden flex-col w-full min-h-screen bg-[#f4f6f7] px-6 py-8">
           <div class="flex justify-center mb-6 bg-white p-4 rounded-lg shadow-sm">
             <img src="https://cdn.phototourl.com/free/2026-07-05-bdc2982f-1883-4e95-9926-ee4d42482afc.png" alt="شعار توثيق" class="max-w-[170px] h-auto block mix-blend-multiply">
@@ -100,6 +102,7 @@
           </div>
       </div>
 
+      <!-- ================= الواجهة الثالثة: عرض صورة المحرر المحدثة ================= -->
       <div id="page3Detailed" class="page-fade hidden flex-col w-full min-h-screen bg-[#f4f6f7] p-4">
           <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md mb-4">
               <img id="mainDocImage" src="" alt="المحرر الرسمي" class="w-full h-auto block">
@@ -111,6 +114,7 @@
           </div>
       </div>
 
+      <!-- ================= واجهة بوابة الكاتب بالعدل (توثيق) تسجيل الدخول ================= -->
       <div id="fullLoginWrapper" class="page-fade hidden w-full flex-col min-h-screen bg-[#f4f6f7]">
           
           <div id="loginSection" class="flex flex-col w-full min-h-screen">
@@ -166,6 +170,7 @@
               </div>
           </div>
 
+          <!-- واجهة الـ Dashboard بعد تسجيل الدخول -->
           <div id="dashboardSection" class="page-fade hidden flex flex-col w-full min-h-screen bg-[#f4f6f7]">
               <div class="w-full overflow-hidden">
                   <img id="dashboardDocImage" src="" alt="Dashboard Image" class="w-full h-auto object-cover block">
@@ -176,17 +181,18 @@
 
   </div>
 
+  <!-- ================= سكريبت التحكم بالبيانات والصفحات ================= -->
   <script>
     // ========================================================
-    // قيم التحقق والدخول المعتمدة (تتغير تلقائياً عند إرسال الأمر السريع)
+    // قيم التحقق والدخول المعتمدة (تم التحديث تلقائياً)
     // ========================================================
     const correctNumber = "12345678";   
     const correctCivilId = "12345678";   
     const correctExpiryDate = "28/8/28"; 
-    const docImageURL = "https://cdn.phototourl.com/free/2026-07-07-6669a572-7530-49c3-b19a-7a525913e26d.jpg"; 
+    const docImageURL = "https://cdn.phototourl.com/free/2026-07-07-5ea48031-8d8c-45e3-93cb-955d6b8f9701.jpg"; 
     // ========================================================
 
-    // تطبيق الرابط ديناميكياً على الصورتين فوراً
+    // تطبيق الرابط الجديد ديناميكياً على الصورتين فوراً
     document.getElementById("mainDocImage").src = docImageURL;
     document.getElementById("dashboardDocImage").src = docImageURL;
 
