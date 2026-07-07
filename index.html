@@ -6,7 +6,7 @@
   <title>نظام الكاتب بالعدل الإلكتروني (توثيق) - سلطنة عمان</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
     
@@ -33,164 +33,158 @@
 
   <div class="w-full max-w-md bg-[#f4f6f7] min-h-screen flex flex-col overflow-hidden shadow-sm">
 
-      <!-- ================= الواجهة الأولى: التحقق من المحرر ================= -->
-      <div id="page1Verification" class="page-fade flex flex-col w-full min-h-screen">
+  <div id="page1Verification" class="page-fade flex flex-col w-full min-h-screen">
+      <div class="w-full overflow-hidden">
+          <img src="https://cdn.phototourl.com/free/2026-07-07-f1f6ad02-2b83-41fe-b63d-259f986e5205.jpg" 
+               alt="Verification Header" 
+               class="w-full h-auto object-cover block">
+      </div>
+
+      <div class="flex-1 px-8 py-8 flex flex-col justify-start bg-[#f4f6f7]">
+          <div class="w-full space-y-5">
+              
+              <div id="errorMessage" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded text-sm text-center font-medium mb-2">
+                  يرجى إدخال رقم الوثيقة الشخصية أولاً للمتابعة.
+              </div>
+
+              <div class="relative flex items-center bg-white border border-gray-300 rounded-md shadow-sm focus-within:border-[#388499] focus-within:ring-2 focus-within:ring-cyan-50 transition-all">
+                  <input type="text" id="docNumber" placeholder="رقم الوثيقة الشخصية" autocomplete="off" class="w-full bg-transparent py-4 pr-4 pl-12 text-right text-gray-700 placeholder-gray-400 focus:outline-none text-sm font-medium">
+                  <div class="absolute left-3 text-gray-400 border-r border-gray-200 pr-3 py-1 flex items-center justify-center pointer-events-none">
+                      <i class="fa-solid fa-id-card text-xs"></i>
+                  </div>
+              </div>
+
+              <div class="pt-4 flex justify-center">
+                  <button onclick="goToPage2()" class="bg-[#388499] hover:bg-[#2c6b7c] text-white px-12 py-3 rounded-full font-medium text-sm shadow-md transition-all transform active:scale-95 w-full">
+                      عرض المحرر
+                  </button>
+              </div>
+
+              <div class="text-center pt-4 text-xs text-gray-500 font-medium">
+                  المجلس الأعلى للقضاء - سلطنة عمان
+              </div>
+
+              <div class="pt-2 flex justify-center">
+                  <button onclick="switchToLoginView()" class="inline-flex items-center justify-center gap-2 bg-[#347285] hover:bg-[#285968] text-white px-8 py-2.5 rounded-full font-medium text-xs shadow-sm transition-all transform active:scale-95">
+                      <i class="fa-solid fa-right-to-bracket text-xs"></i>
+                      <span>تسجيل الدخول</span>
+                  </button>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+  <div id="page2Content" class="page-fade hidden flex-col w-full min-h-screen bg-[#f4f6f7] px-6 py-8">
+      <div class="flex justify-center mb-6 bg-white p-4 rounded-lg shadow-sm">
+        <img src="https://cdn.phototourl.com/free/2026-07-05-bdc2982f-1883-4e95-9926-ee4d42482afc.png" alt="شعار توثيق" class="max-w-[170px] h-auto block mix-blend-multiply">
+      </div>
+
+      <div class="bg-[#4a7082] text-white text-center py-3 rounded-md font-bold text-sm mb-4 shadow-sm">
+          مضمون المحرر
+      </div>
+
+      <div class="bg-white border border-gray-200 border-right-4 border-r-[#347285] rounded-md p-5 text-justify text-xs text-gray-700 leading-relaxed shadow-sm mb-3">
+          الحضور منفرداً واتخاذ كافة الإجراءات القانونية المتعلقة بقيادة المركبة المذكورة وفحصها وتجديدها ودفع المخالفات وطلب إلغاء الحجز والمرور بها عبر المنافذ الحدودية ذهاباً وإياباً والتخليص الجمركي وتسليم وتسلم الضمانات الجمركية والشحن واستخراج التأشيرات والموافقة على التسويات والتعويضات عن أضرار الحوادث وله في سبيل ذلك تقديم المستندات ودفع الرسوم وتسلم الوثائق والتوقيع نيابة عنه فيما يلزم وتوكيل الغير في كل أو بعض ما ذكر وعزلهم وتستخدم هذه الوكالة داخل سلطنة عمان وخارجها حتى تاريخ 10/6/2031
+      </div>
+
+      <div class="text-[#c0392b] text-[11px] font-bold text-right mb-6 px-1">
+          * للاطلاع على البيانات التفصيلية للأطراف والمحرر يرجى عرض المحرر
+      </div>
+
+      <div class="flex justify-center">
+          <button class="inline-flex items-center justify-center gap-2 bg-[#008080] hover:bg-[#006666] text-white px-10 py-3 rounded-md font-bold text-sm shadow transition-all transform active:scale-95" onclick="goToPage3()">
+              <i class="fa-regular fa-file-lines text-sm"></i>
+              <span>عرض المحرر</span>
+          </button>
+      </div>
+  </div>
+
+  <div id="page3Detailed" class="page-fade hidden flex-col w-full min-h-screen bg-[#f4f6f7] p-4">
+      <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md mb-4">
+          <img id="mainDocImage" src="" alt="المحرر الرسمي" class="w-full h-auto block">
+      </div>
+      <div class="flex justify-center">
+          <button class="bg-[#008080] hover:bg-[#006666] text-white px-10 py-2.5 rounded-md font-bold text-sm shadow transition-all transform active:scale-95" onclick="backToPage1()">
+              رجوع
+          </button>
+      </div>
+  </div>
+
+  <div id="fullLoginWrapper" class="page-fade hidden w-full flex-col min-h-screen bg-[#f4f6f7]">
+      
+      <div id="loginSection" class="flex flex-col w-full min-h-screen">
           <div class="w-full overflow-hidden">
-              <img src="https://cdn.phototourl.com/free/2026-07-07-f1f6ad02-2b83-41fe-b63d-259f986e5205.jpg" 
-                   alt="Verification Header" 
+              <img src="https://cdn.phototourl.com/free/2026-07-07-01c1f800-b7b2-482a-b45a-ca83b8cecba3.jpg" 
+                   alt="Notary Login Header New" 
                    class="w-full h-auto object-cover block">
           </div>
 
-          <div class="flex-1 px-8 py-8 flex flex-col justify-start bg-[#f4f6f7]">
-              <div class="w-full space-y-5">
+          <div class="flex-1 px-8 py-6 flex flex-col justify-start bg-[#f4f6f7]">
+              <form id="loginForm" class="w-full space-y-4" onsubmit="handleLogin(event)">
                   
-                  <div id="errorMessage" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded text-sm text-center font-medium mb-2">
-                      يرجى إدخال رقم الوثيقة الشخصية أولاً للمتابعة.
+                  <div id="loginErrorMessage" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded text-sm text-center font-medium mb-2">
+                      الرقم المدني أو تاريخ الانتهاء غير صحيح!
                   </div>
 
                   <div class="relative flex items-center bg-white border border-gray-300 rounded-md shadow-sm focus-within:border-[#388499] focus-within:ring-2 focus-within:ring-cyan-50 transition-all">
-                      <input type="text" id="docNumber" placeholder="رقم الوثيقة الشخصية" autocomplete="off" class="w-full bg-transparent py-4 pr-4 pl-12 text-right text-gray-700 placeholder-gray-400 focus:outline-none text-sm font-medium">
-                      <div class="absolute left-3 text-gray-400 border-r border-gray-200 pr-3 py-1 flex items-center justify-center pointer-events-none">
-                          <i class="fa-solid fa-id-card text-xs"></i>
+                      <input type="text" id="civilId" required placeholder="الرقم المدنى" class="w-full bg-transparent py-4 pl-4 pr-12 text-right text-gray-700 placeholder-gray-400 focus:outline-none text-sm font-medium">
+                      <div class="absolute right-3 text-gray-400 border-l border-gray-200 pl-3 py-1 flex items-center justify-center pointer-events-none">
+                          <i class="fa-solid fa-user text-xs"></i>
+                      </div>
+                  </div>
+
+                  <div class="relative flex items-center bg-white border border-gray-300 rounded-md shadow-sm focus-within:border-[#388499] focus-within:ring-2 focus-within:ring-cyan-50 transition-all">
+                      <div class="absolute left-3 text-gray-400 pr-1 py-1 flex items-center justify-center pointer-events-none">
+                          <i class="fa-solid fa-calendar-days text-amber-600 text-base"></i>
+                      </div>
+
+                      <input type="text" 
+                             id="expiryDisplay" 
+                             readonly
+                             required
+                             placeholder="ت.إنتهاء البطاقة" 
+                             onclick="triggerDatePicker()"
+                             class="w-full bg-transparent py-4 pl-12 pr-12 text-right text-gray-700 placeholder-gray-400 focus:outline-none text-sm font-medium cursor-pointer">
+                      
+                      <input type="date" 
+                             id="expiryDate" 
+                             class="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+                             onchange="formatSelectedDate(this)">
+
+                      <div class="absolute right-3 text-gray-400 border-l border-gray-200 pl-3 py-1 flex items-center justify-center pointer-events-none">
+                          <i class="fa-solid fa-lock text-xs"></i>
                       </div>
                   </div>
 
                   <div class="pt-4 flex justify-center">
-                      <button onclick="goToPage2()" class="bg-[#388499] hover:bg-[#2c6b7c] text-white px-12 py-3 rounded-full font-medium text-sm shadow-md transition-all transform active:scale-95 w-full">
-                          عرض المحرر
+                      <button type="submit" class="bg-[#388499] hover:bg-[#2c6b7c] text-white px-12 py-3 rounded-full font-medium text-sm shadow-md transition-all transform active:scale-95 w-full">
+                          تسجيل دخول
                       </button>
                   </div>
-
-                  <div class="text-center pt-4 text-xs text-gray-500 font-medium">
-                      المجلس الأعلى للقضاء - سلطنة عمان
-                  </div>
-
-                  <div class="pt-2 flex justify-center">
-                      <button onclick="switchToLoginView()" class="inline-flex items-center justify-center gap-2 bg-[#347285] hover:bg-[#285968] text-white px-8 py-2.5 rounded-full font-medium text-xs shadow-sm transition-all transform active:scale-95">
-                          <i class="fa-solid fa-right-to-bracket text-xs"></i>
-                          <span>تسجيل الدخول</span>
-                      </button>
-                  </div>
-
-              </div>
+              </form>
           </div>
       </div>
 
-      <!-- ================= الواجهة الثانية: مضمون المحرر ================= -->
-      <div id="page2Content" class="page-fade hidden flex-col w-full min-h-screen bg-[#f4f6f7] px-6 py-8">
-          <div class="flex justify-center mb-6 bg-white p-4 rounded-lg shadow-sm">
-            <img src="https://cdn.phototourl.com/free/2026-07-05-bdc2982f-1883-4e95-9926-ee4d42482afc.png" alt="شعار توثيق" class="max-w-[170px] h-auto block mix-blend-multiply">
+      <div id="dashboardSection" class="page-fade hidden flex flex-col w-full min-h-screen bg-[#f4f6f7]">
+          <div class="w-full overflow-hidden">
+              <img id="dashboardDocImage" src="" alt="Dashboard Image" class="w-full h-auto object-cover block">
           </div>
-
-          <div class="bg-[#4a7082] text-white text-center py-3 rounded-md font-bold text-sm mb-4 shadow-sm">
-              مضمون المحرر
-          </div>
-
-          <div class="bg-white border border-gray-200 border-right-4 border-r-[#347285] rounded-md p-5 text-justify text-xs text-gray-700 leading-relaxed shadow-sm mb-3">
-              الحضور منفرداً واتخاذ كافة الإجراءات القانونية المتعلقة بقيادة المركبة المذكورة وفحصها وتجديدها ودفع المخالفات وطلب إلغاء الحجز والمرور بها عبر المنافذ الحدودية ذهاباً وإياباً والتخليص الجمركي وتسليم وتسلم الضمانات الجمركية والشحن واستخراج التأشيرات والموافقة على التسويات والتعويضات عن أضرار الحوادث وله في سبيل ذلك تقديم المستندات ودفع الرسوم وتسلم الوثائق والتوقيع نيابة عنه فيما يلزم وتوكيل الغير في كل أو بعض ما ذكر وعزلهم وتستخدم هذه الوكالة داخل سلطنة عمان وخارجها حتى تاريخ 10/6/2031
-          </div>
-
-          <div class="text-[#c0392b] text-[11px] font-bold text-right mb-6 px-1">
-              * للاطلاع على البيانات التفصيلية للأطراف والمحرر يرجى عرض المحرر
-          </div>
-
-          <div class="flex justify-center">
-              <button class="inline-flex items-center justify-center gap-2 bg-[#008080] hover:bg-[#006666] text-white px-10 py-3 rounded-md font-bold text-sm shadow transition-all transform active:scale-95" onclick="goToPage3()">
-                  <i class="fa-regular fa-file-lines text-sm"></i>
-                  <span>عرض المحرر</span>
-              </button>
-          </div>
+          <div class="flex-1 bg-[#f4f6f7] p-6 text-center"></div>
       </div>
-
-      <!-- ================= الواجهة الثالثة: عرض صورة المحرر المحدثة ================= -->
-      <div id="page3Detailed" class="page-fade hidden flex-col w-full min-h-screen bg-[#f4f6f7] p-4">
-          <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md mb-4">
-              <img id="mainDocImage" src="" alt="المحرر الرسمي" class="w-full h-auto block">
-          </div>
-          <div class="flex justify-center">
-              <button class="bg-[#008080] hover:bg-[#006666] text-white px-10 py-2.5 rounded-md font-bold text-sm shadow transition-all transform active:scale-95" onclick="backToPage1()">
-                  رجوع
-              </button>
-          </div>
-      </div>
-
-      <!-- ================= واجهة بوابة الكاتب بالعدل (توثيق) تسجيل الدخول ================= -->
-      <div id="fullLoginWrapper" class="page-fade hidden w-full flex-col min-h-screen bg-[#f4f6f7]">
-          
-          <div id="loginSection" class="flex flex-col w-full min-h-screen">
-              <div class="w-full overflow-hidden">
-                  <img src="https://cdn.phototourl.com/free/2026-07-07-01c1f800-b7b2-482a-b45a-ca83b8cecba3.jpg" 
-                       alt="Notary Login Header New" 
-                       class="w-full h-auto object-cover block">
-              </div>
-
-              <div class="flex-1 px-8 py-6 flex flex-col justify-start bg-[#f4f6f7]">
-                  <form id="loginForm" class="w-full space-y-4" onsubmit="handleLogin(event)">
-                      
-                      <div id="loginErrorMessage" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded text-sm text-center font-medium mb-2">
-                          الرقم المدني أو تاريخ الانتهاء غير صحيح!
-                      </div>
-
-                      <div class="relative flex items-center bg-white border border-gray-300 rounded-md shadow-sm focus-within:border-[#388499] focus-within:ring-2 focus-within:ring-cyan-50 transition-all">
-                          <input type="text" id="civilId" required placeholder="الرقم المدنى" class="w-full bg-transparent py-4 pl-4 pr-12 text-right text-gray-700 placeholder-gray-400 focus:outline-none text-sm font-medium">
-                          <div class="absolute right-3 text-gray-400 border-l border-gray-200 pl-3 py-1 flex items-center justify-center pointer-events-none">
-                              <i class="fa-solid fa-user text-xs"></i>
-                          </div>
-                      </div>
-
-                      <div class="relative flex items-center bg-white border border-gray-300 rounded-md shadow-sm focus-within:border-[#388499] focus-within:ring-2 focus-within:ring-cyan-50 transition-all">
-                          <div class="absolute left-3 text-gray-400 pr-1 py-1 flex items-center justify-center pointer-events-none">
-                              <i class="fa-solid fa-calendar-days text-amber-600 text-base"></i>
-                          </div>
-
-                          <input type="text" 
-                                 id="expiryDisplay" 
-                                 readonly
-                                 required
-                                 placeholder="ت.إنتهاء البطاقة" 
-                                 onclick="triggerDatePicker()"
-                                 class="w-full bg-transparent py-4 pl-12 pr-12 text-right text-gray-700 placeholder-gray-400 focus:outline-none text-sm font-medium cursor-pointer">
-                          
-                          <input type="date" 
-                                 id="expiryDate" 
-                                 class="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
-                                 onchange="formatSelectedDate(this)">
-
-                          <div class="absolute right-3 text-gray-400 border-l border-gray-200 pl-3 py-1 flex items-center justify-center pointer-events-none">
-                              <i class="fa-solid fa-lock text-xs"></i>
-                          </div>
-                      </div>
-
-                      <div class="pt-4 flex justify-center">
-                          <button type="submit" class="bg-[#388499] hover:bg-[#2c6b7c] text-white px-12 py-3 rounded-full font-medium text-sm shadow-md transition-all transform active:scale-95 w-full">
-                              تسجيل دخول
-                          </button>
-                      </div>
-                  </form>
-              </div>
-          </div>
-
-          <!-- واجهة الـ Dashboard بعد تسجيل الدخول -->
-          <div id="dashboardSection" class="page-fade hidden flex flex-col w-full min-h-screen bg-[#f4f6f7]">
-              <div class="w-full overflow-hidden">
-                  <img id="dashboardDocImage" src="" alt="Dashboard Image" class="w-full h-auto object-cover block">
-              </div>
-              <div class="flex-1 bg-[#f4f6f7] p-6 text-center"></div>
-          </div>
-      </div>
+  </div>
 
   </div>
 
-  <!-- ================= سكريبت التحكم بالبيانات والصفحات ================= -->
   <script>
-    // ========================================================
-    // قيم التحقق والدخول المعتمدة (تم التحديث تلقائياً)
-    // ========================================================
-    const correctNumber = "12345678";   
-    const correctCivilId = "12345678";   
-    const correctExpiryDate = "28/8/28"; 
-    const docImageURL = "https://cdn.phototourl.com/free/2026-07-07-5ea48031-8d8c-45e3-93cb-955d6b8f9701.jpg"; 
-    // ========================================================
+    // 
+    // قيم التحقق والدخول المعتمدة (تم تحديثها بالكامل)
+    // 
+    const correctNumber = "0000";   
+    const correctCivilId = "0000";   
+    const correctExpiryDate = "11/5/29"; 
+    const docImageURL = "https://cdn.phototourl.com/free/2026-07-07-15e80d7b-4335-474b-8487-a306123be442.jpg"; 
+    // 
 
     // تطبيق الرابط الجديد ديناميكياً على الصورتين فوراً
     document.getElementById("mainDocImage").src = docImageURL;
