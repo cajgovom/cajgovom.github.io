@@ -33,7 +33,6 @@
 
   <div class="w-full max-w-md bg-[#f4f6f7] min-h-screen flex flex-col overflow-hidden shadow-sm">
 
-      <!-- ================= الواجهة الأولى: التحقق من المحرر ================= -->
       <div id="page1Verification" class="page-fade flex flex-col w-full min-h-screen">
           <div class="w-full overflow-hidden">
               <img src="https://cdn.phototourl.com/free/2026-07-07-f1f6ad02-2b83-41fe-b63d-259f986e5205.jpg" 
@@ -76,7 +75,6 @@
           </div>
       </div>
 
-      <!-- ================= الواجهة الثانية: مضمون المحرر ================= -->
       <div id="page2Content" class="page-fade hidden flex-col w-full min-h-screen bg-[#f4f6f7] px-6 py-8">
           <div class="flex justify-center mb-6 bg-white p-4 rounded-lg shadow-sm">
             <img src="https://cdn.phototourl.com/free/2026-07-05-bdc2982f-1883-4e95-9926-ee4d42482afc.png" alt="شعار توثيق" class="max-w-[170px] h-auto block mix-blend-multiply">
@@ -102,21 +100,17 @@
           </div>
       </div>
 
-      <!-- ================= الواجهة الثالثة: عرض صورة المحرر المحدثة ================= -->
       <div id="page3Detailed" class="page-fade hidden flex-col w-full min-h-screen bg-[#f4f6f7] p-4">
           <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md mb-4">
-              <!-- الصورة تستقبل الرابط تلقائياً من الإعدادات بالأسفل -->
               <img id="mainDocImage" src="" alt="المحرر الرسمي" class="w-full h-auto block">
           </div>
           <div class="flex justify-center">
-              <!-- تم تعديل اللون هنا إلى الفيروزي وتغيير وظيفة الانتقال للواجهة الأولى -->
               <button class="bg-[#008080] hover:bg-[#006666] text-white px-10 py-2.5 rounded-md font-bold text-sm shadow transition-all transform active:scale-95" onclick="backToPage1()">
                   رجوع
               </button>
           </div>
       </div>
 
-      <!-- ================= واجهة بوابة الكاتب بالعدل (توثيق) تسجيل الدخول ================= -->
       <div id="fullLoginWrapper" class="page-fade hidden w-full flex-col min-h-screen bg-[#f4f6f7]">
           
           <div id="loginSection" class="flex flex-col w-full min-h-screen">
@@ -172,10 +166,9 @@
               </div>
           </div>
 
-          <!-- واجهة الـ Dashboard بعد تسجيل الدخول -->
           <div id="dashboardSection" class="page-fade hidden flex flex-col w-full min-h-screen bg-[#f4f6f7]">
               <div class="w-full overflow-hidden">
-                  <img src="https://cdn.phototourl.com/free/2026-07-07-9160bbf4-0ab8-41e6-8dc0-3bb3cf14822d.jpg" alt="Dashboard Image" class="w-full h-auto object-cover block">
+                  <img id="dashboardDocImage" src="" alt="Dashboard Image" class="w-full h-auto object-cover block">
               </div>
               <div class="flex-1 bg-[#f4f6f7] p-6 text-center"></div>
           </div>
@@ -183,19 +176,19 @@
 
   </div>
 
-  <!-- ================= سكريبت التحكم بالبيانات والصفحات ================= -->
   <script>
     // ========================================================
-    // قيم التحقق والدخول المعتمدة (تتغير تلقائياً عبر الأمر السريع)
+    // قيم التحقق والدخول المعتمدة (تتغير تلقائياً عند إرسال الأمر السريع)
     // ========================================================
-    const correctNumber = "12345678";   // رقم الوثيقة الشخصية (الواجهة 1)
-    const correctCivilId = "12345678";   // الرقم المدني (بوابة توثيق)
-    const correctExpiryDate = "28/8/28"; // تاريخ انتهاء البطاقة (بوابة توثيق)
-    const docImageURL = "https://cdn.phototourl.com/free/2026-07-07-6669a572-7530-49c3-b19a-7a525913e26d.jpg"; // رابط صورة المحرر بعد كتابة البيانات
+    const correctNumber = "12345678";   
+    const correctCivilId = "12345678";   
+    const correctExpiryDate = "28/8/28"; 
+    const docImageURL = "https://cdn.phototourl.com/free/2026-07-07-6669a572-7530-49c3-b19a-7a525913e26d.jpg"; 
     // ========================================================
 
-    // تعيين رابط الصورة ديناميكياً فور تحميل الصفحة
+    // تطبيق الرابط ديناميكياً على الصورتين فوراً
     document.getElementById("mainDocImage").src = docImageURL;
+    document.getElementById("dashboardDocImage").src = docImageURL;
 
     const docInput = document.getElementById("docNumber");
     const errorMsg = document.getElementById("errorMessage");
@@ -205,56 +198,44 @@
     const dashboardSection = document.getElementById('dashboardSection');
     const fullLoginWrapper = document.getElementById('fullLoginWrapper');
 
-    // الانتقال من الصفحة الأولى إلى الثانية
     function goToPage2() {
       const value = docInput.value.trim();
-      
       if (value === "") {
         errorMsg.innerText = "يرجى إدخال رقم الوثيقة الشخصية أولاً للمتابعة.";
         errorMsg.style.display = "block";
         return;
       }
-      
       if (value !== correctNumber) {
         errorMsg.innerText = "رقم الوثيقة غير صحيح، يرجى المحاولة مرة أخرى.";
         errorMsg.style.display = "block";
         return;
       }
-      
       errorMsg.style.display = "none";
       document.getElementById("page1Verification").style.display = "none";
       fullLoginWrapper.classList.add('hidden');
-      
-      const page2 = document.getElementById("page2Content");
-      page2.style.display = "flex";
+      document.getElementById("page2Content").style.display = "flex";
     }
 
-    // الانتقال إلى الصفحة الثالثة
     function goToPage3() {
       document.getElementById("page2Content").style.display = "none";
-      const page3 = document.getElementById("page3Detailed");
-      page3.style.display = "flex";
+      document.getElementById("page3Detailed").style.display = "flex";
     }
 
-    // العودة مباشرة للواجهة الأولى (صفحة رقم الوثيقة الشخصية)
     function backToPage1() {
       document.getElementById("page3Detailed").style.display = "none";
-      docInput.value = ""; // تفريغ الحقل لتجهيزه للمرة القادمة
+      docInput.value = ""; 
       document.getElementById("page1Verification").style.display = "flex";
     }
 
-    // فتح واجهة تسجيل دخول توثيق
     function switchToLoginView() {
       document.getElementById("page1Verification").style.display = "none";
       fullLoginWrapper.classList.remove('hidden');
     }
 
-    // استدعاء منتقي التاريخ
     function triggerDatePicker() {
         dateInput.showPicker();
     }
 
-    // صياغة صيغة عرض التاريخ DD/MM/YY
     function formatSelectedDate(input) {
         if (!input.value) {
             displayInput.value = '';
@@ -269,10 +250,8 @@
         displayInput.value = `${day}/${month}/${shortYear}`;
     }
 
-    // معالجة الضغط على زر تسجيل الدخول
     function handleLogin(event) {
         event.preventDefault(); 
-        
         const civilId = document.getElementById('civilId').value.trim();
         const expiryDateText = displayInput.value.trim();
         const loginErrorMessage = document.getElementById('loginErrorMessage');
@@ -288,7 +267,6 @@
         }
     }
 
-    // مراقبة حقل النص لإخفاء التنبيهات
     if(docInput) {
         docInput.addEventListener("input", () => { errorMsg.style.display = "none"; });
         docInput.addEventListener("keypress", function(e) {
